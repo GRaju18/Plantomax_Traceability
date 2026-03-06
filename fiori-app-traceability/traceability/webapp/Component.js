@@ -46,6 +46,7 @@ sap.ui.define([
 			this.setModel(appModel, "appModel");
 
 			var jsonModel = new JSONModel({
+				versionInfo: "v1.125.01",
 				strainList: [],
 				createMode: false,
 				serLayerbaseUrl: "https://login.seedandbeyond.com:50000",

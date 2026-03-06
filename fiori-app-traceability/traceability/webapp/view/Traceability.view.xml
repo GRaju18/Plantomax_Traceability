@@ -23,11 +23,6 @@
 					<!--</FlexBox>-->
 				</f:content>
 				<f:actions>
-					<!--<Text text="{i18n>License}"></Text>-->
-					<!--<Select busy="{jsonModel>/licBusy}" id="license" width="18rem" change="onChanageLicenseType" items="{jsonModel>/licenseList}"-->
-					<!--	selectedKey="{jsonModel>/selectedLicense}">-->
-					<!--	<core:Item key="{jsonModel>Code}" text="{jsonModel>Name} - {jsonModel>Code}"/>-->
-					<!--</Select>-->
 					<Button icon="sap-icon://refresh" press="onRefresh" tooltip="Refresh Data"/>
 				</f:actions>
 				<f:navigationActions>
@@ -46,15 +41,13 @@
 							<MultiInput width="25rem" placeholder="{i18n>Search}" tokenUpdate="tokenUpdateMultiInput" submit="onSubmitMultiInput" showValueHelp="false"
 								liveChange="onChangeMultiInput" id="searchFieldTable" enableMultiLineMode="true"/>
 							<Button text="{i18n>ClearAllFilters}" press="clearAllFilters"/>
-							<!--<Text class="sapMTBSeparator"/>-->
-							<!--<Button icon="sap-icon://excel-attachment" tooltip="Export to Excel" type="Default" press="handleExportToExcel"></Button>-->
 						</OverflowToolbar>
 					</table:extension>
 					<table:columns>
-						<table:Column sortProperty="U_NDTTM" filterProperty="U_NDTTM">
+						<table:Column sortProperty="CreateDate" filterProperty="CreateDate">
 							<Label text="Date Time" design="Bold"/>
 							<table:template>
-								<Text text="{jsonModel>U_NDTTM}" wrapping="false"/>
+								<Text text="{jsonModel>CreateDate}" wrapping="false"/>
 							</table:template>
 						</table:Column>
 						<table:Column sortProperty="Creator" filterProperty="Creator">
@@ -111,15 +104,21 @@
 								<Text text="{jsonModel>U_PhaseSequence}" wrapping="false"/>
 							</table:template>
 						</table:Column>
-						<table:Column sortProperty="U_GoodsReceiptRef" filterProperty="U_GoodsReceiptRef">
-							<Label text="Goods Receipt Ref" design="Bold"/>
-							<table:template>
-								<Text text="{jsonModel>U_GoodsReceiptRef}" wrapping="false"/>
-							</table:template>
-						</table:Column>
+						<!--<table:Column sortProperty="U_GoodsReceiptRef" filterProperty="U_GoodsReceiptRef">-->
+						<!--	<Label text="Goods Receipt Ref" design="Bold"/>-->
+						<!--	<table:template>-->
+						<!--		<Text text="{jsonModel>U_GoodsReceiptRef}" wrapping="false"/>-->
+						<!--	</table:template>-->
+						<!--</table:Column>-->
 					</table:columns>
 				</table:Table>
 			</FlexBox>
 		</f:content>
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Text text="{jsonModel>/versionInfo}"/>
+			</OverflowToolbar>
+		</f:footer>
 	</f:DynamicPage>
 </mvc:View>

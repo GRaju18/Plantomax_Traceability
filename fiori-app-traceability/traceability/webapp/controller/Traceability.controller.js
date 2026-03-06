@@ -17,10 +17,6 @@ sap.ui.define([
 		 */
 		onInit: function () {
 			this.getOwnerComponent().getRouter(this).attachRoutePatternMatched(this._objectMatched, this);
-			var that = this;
-			setInterval(function () {
-				that.loadMasterData();
-			}, 180000);
 		},
 		/** Method Called when we call routing and navigate to plants page.*/
 		_objectMatched: function (oEvent) {
@@ -41,12 +37,12 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var jsonModel = this.getOwnerComponent().getModel("jsonModel");
 			var orderBy = "?$orderby=CreateDate desc,CreateTime desc";
-			this.readServiecLayer("/b1s/v2/TRACEABILITY" + orderBy, function (data) {
+			this.readServiecLayer("/b1s/v2/TRACE" + orderBy, function (data) {
 				$.each(data.value, function (i, e) {
-					if (e.U_NCRDT) {
-						var cDate1 = e.U_NCRDT;
+					if (e.CreateDate) {
+						var cDate1 = e.CreateDate;
 						var cDateValue = cDate1.split("-");
-						e.U_NCRDT = cDateValue[0] + "-" + cDateValue[1] + "-" + cDateValue[2].split("T")[0];
+						e.CreateDate = cDateValue[0] + "-" + cDateValue[1] + "-" + cDateValue[2].split("T")[0];
 					}
 				});
 				var cDate = new Date();
